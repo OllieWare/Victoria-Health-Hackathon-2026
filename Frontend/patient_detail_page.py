@@ -1,7 +1,15 @@
+import os
+
 import requests
 import streamlit as st
 
-BACKEND_BASE_URL = "http://localhost:8000"
+BACKEND_BASE_URL = os.getenv(
+    "BACKEND_BASE_URL",
+    st.secrets.get(
+        "BACKEND_BASE_URL",
+        "https://victoria-health-hackathon-2026.onrender.com",
+    ),
+)
 
 st.set_page_config(page_title="Patient Detail", page_icon=":material/person:")
 st.title("Patient Detail")

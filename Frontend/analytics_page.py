@@ -1,8 +1,16 @@
+import os
+
 import pandas as pd
 import requests
 import streamlit as st
 
-BACKEND_BASE_URL = "http://localhost:8000"
+BACKEND_BASE_URL = os.getenv(
+    "BACKEND_BASE_URL",
+    st.secrets.get(
+        "BACKEND_BASE_URL",
+        "https://victoria-health-hackathon-2026.onrender.com",
+    ),
+)
 TRIAGE_LABELS = {
     1: "Resuscitation",
     2: "Emergent",
