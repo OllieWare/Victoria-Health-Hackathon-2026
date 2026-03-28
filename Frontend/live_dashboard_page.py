@@ -2,14 +2,21 @@ import os
 
 import requests
 import streamlit as st
+from streamlit.errors import StreamlitSecretNotFoundError
 
-BACKEND_BASE_URL = os.getenv(
-    "BACKEND_BASE_URL",
-    st.secrets.get(
-        "BACKEND_BASE_URL",
-        "https://victoria-health-hackathon-2026.onrender.com",
-    ),
-)
+
+def get_backend_base_url() -> str:
+    env_value = os.getenv("BACKEND_BASE_URL")
+    if env_value:
+        return env_value
+
+    try:
+        return st.secrets["BACKEND_BASE_URL"]
+    except (KeyError, StreamlitSecretNotFoundError):
+        return "https://victoria-health-hackathon-2026.onrender.com"
+
+
+BACKEND_BASE_URL = get_backend_base_url()
 
 st.set_page_config(page_title="Live Dashboard", page_icon=":material/monitoring:")
 st.title("Live Dashboard")
