@@ -5,7 +5,7 @@ These commands are written for PowerShell on Windows. Copy and paste them one li
 ## 1. Go to the backend folder
 
 ```powershell
-cd C:\Users\ollie\Documents\HealthHackathon2026\Data\Backend
+cd Backend
 ```
 
 ## 2. Create a virtual environment

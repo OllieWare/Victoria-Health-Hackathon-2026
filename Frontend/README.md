@@ -5,7 +5,7 @@ These commands are written for PowerShell on Windows. Copy and paste them one li
 ## 1. Go to the frontend folder
 
 ```powershell
-cd C:\Users\ollie\Documents\HealthHackathon2026\Data\Frontend
+cd Frontend
 ```
 
 ## 2. Create a virtual environment
