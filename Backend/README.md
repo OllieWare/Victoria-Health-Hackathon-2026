@@ -26,19 +26,19 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-## 5. Move into the FastAPI app folder
-
-```powershell
-cd .\track-1
-```
-
-## 6. Start the backend server
+## 5. Start the backend server
 
 ```powershell
 uvicorn app.main:app --reload
 ```
 
-## 7. Open the backend in your browser
+The triage endpoint expects the hackathon CSVs to exist at:
+
+```text
+..\Data Sources for Hackathon\hackathon-data\track-1-clinical-ai\synthea-patients
+```
+
+## 6. Open the backend in your browser
 
 Health check:
 
@@ -52,7 +52,7 @@ Swagger docs:
 http://127.0.0.1:8000/docs
 ```
 
-## 8. Test the generate-data endpoint in Swagger
+## 7. Test the generate-data endpoint in Swagger
 
 Open this page:
 
@@ -74,6 +74,26 @@ Then:
 ```
 
 4. Click `Execute`
+
+## 8. Test the triage prediction endpoint
+
+Open this page:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+Then call `POST /api/triage/predict` with a body like:
+
+```json
+{
+  "query": "52 year old with chest pain and shortness of breath, troponin 0.42, sodium 133, taking metoprolol",
+  "labs": {
+    "Troponin I": 0.42
+  },
+  "medications": ["metoprolol"]
+}
+```
 
 ## 9. Stop the backend
 
